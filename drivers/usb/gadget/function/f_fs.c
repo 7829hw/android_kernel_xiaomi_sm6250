@@ -1405,6 +1405,7 @@ static long ffs_epfile_ioctl(struct file *file, unsigned code,
 		struct usb_endpoint_descriptor desc1, *desc;
 
 		switch (epfile->ffs->gadget->speed) {
+		case USB_SPEED_SUPER_PLUS:
 		case USB_SPEED_SUPER:
 			desc_idx = 2;
 			break;
@@ -2086,7 +2087,6 @@ static void ffs_func_eps_disable(struct ffs_function *func)
 	struct ffs_data *ffs;
 	struct ffs_ep *ep;
 	struct ffs_epfile *epfile;
-	struct ffs_data *ffs;
 	unsigned short count;
 	unsigned long flags;
 
